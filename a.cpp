@@ -1,5 +1,8 @@
 #include <iostream>
 #include <thread>
+#include <vector>
+#include <string>
+#include <algorithm>
 
 static const int num_threads = 10;
 
@@ -357,6 +360,32 @@ int main()
     typedef std::istream_iterator<int> in;
 
     std::for_each(in(std::cin), in(), std::cout << (_1 * 3) << " " );
+}
+
+/* Lambdas */
+int main()
+{
+    std::vector<std::string> v;
+
+    v.push_back("cat");
+    v.push_back("antelope");
+    v.push_back("puppy");
+    v.push_back("bear");
+
+    /* std::sort(v.begin(), v.end()); */
+    std::sort(v.begin(), v.end(), [](const std::string& left, const std::string& right)
+                                      {
+                                          return left.size() < right.size();
+                                      });
+
+    for (auto i : v)
+    {
+        std::cout << i << " ";
+    }
+
+    std::cout << std::endl;
+
+    return 0;
 }
 #endif
 
