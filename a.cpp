@@ -3,6 +3,7 @@
 #include <vector>
 #include <string>
 #include <algorithm>
+#include <random>
 
 static const int num_threads = 10;
 
@@ -386,6 +387,22 @@ int main()
     std::cout << std::endl;
 
     return 0;
+}
+
+/* Random numbers generation */
+int main() {
+	std::random_device                     rd;
+	std::default_random_engine             re(rd());
+	std::uniform_int_distribution<int>     edge_rand(1, 10);
+	std::uniform_real_distribution<double> density_rand(0.0, 1.0);
+
+	while (1)
+	{
+		std::cout << "random edge weight = " << edge_rand(re) << std::endl;
+		std::cout << "random density     = " << density_rand(re) << std::endl;
+	}
+
+	return 0;
 }
 #endif
 
